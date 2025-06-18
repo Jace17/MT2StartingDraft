@@ -27,7 +27,7 @@ This is a non-cosmetic mod that changes the game mechanics. Do not use it while 
 
 # Suggested Mods
 
-[Dual Champions](https://thunderstore.io/c/monster-train-2/p/GravitonGamer/Dual_Champions_2/) - Start with two champions instead of one
-[More Stones](https://thunderstore.io/c/monster-train-2/p/GravitonGamer/Monster_Train_2_More_Stones/) - More upgrade variety from the start of the game
+- [Dual Champions](https://thunderstore.io/c/monster-train-2/p/GravitonGamer/Dual_Champions_2/) - Start with two champions instead of one
+- [More Stones](https://thunderstore.io/c/monster-train-2/p/GravitonGamer/Monster_Train_2_More_Stones/) - More upgrade variety from the start
 
 If you loved this or any of my other mods, feel free to [tip me a coffee.](https://ko-fi.com/gravitongamer)
