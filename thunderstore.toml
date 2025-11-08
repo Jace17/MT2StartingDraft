@@ -4,9 +4,9 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "GravitonGamer"
 name = "MT2StartingDraft"
-versionNumber = "0.0.1"
+versionNumber = "1.0.0"
 description = "A mod for Monster Train 2 that replaces the starter and random cards at the start of the run with several card drafts."
-websiteUrl = "https://thunderstore.io"
+websiteUrl = "https://github.com/Jace17/MT2StartingDraft"
 containsNsfwContent = false
 
 [package.dependencies]
