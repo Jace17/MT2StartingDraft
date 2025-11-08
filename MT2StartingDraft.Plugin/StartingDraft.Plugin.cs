@@ -188,8 +188,8 @@ namespace MT2StartingDraft.Plugin
             {
                 CardData mainChampionStarterCard = __instance.GetMainChampionData().starterCardData;
                 CardData subChampionStarterCard = __instance.GetSubChampionData().starterCardData;
-                __instance.AddCardToDeck(mainChampionStarterCard, null, false, Plugin.starterCards.Value - 1, false, false, true, true);
-                __instance.AddCardToDeck(subChampionStarterCard, null, false, Plugin.starterCards.Value - 1, false, false, true, true);
+                __instance.AddCardToDeck(mainChampionStarterCard, null, false, Plugin.starterCards.Value - 1, false, false, true, false, true);
+                __instance.AddCardToDeck(subChampionStarterCard, null, false, Plugin.starterCards.Value - 1, false, false, true, false, true);
             }
 
             // Add the steward cards to the deck
@@ -197,8 +197,8 @@ namespace MT2StartingDraft.Plugin
             {
                 CardData shieldSteward = ___allGameData.FindCardDataByName("TrainStewardShield");
                 CardData spearSteward = ___allGameData.FindCardDataByName("TrainStewardSpear");
-                __instance.AddCardToDeck(shieldSteward, null, false, Plugin.stewardCards.Value - 1, false, false, true, true);
-                __instance.AddCardToDeck(spearSteward, null, false, Plugin.stewardCards.Value - 1, false, false, true, true);
+                __instance.AddCardToDeck(shieldSteward, null, false, Plugin.stewardCards.Value - 1, false, false, true, false, true);
+                __instance.AddCardToDeck(spearSteward, null, false, Plugin.stewardCards.Value - 1, false, false, true, false, true);
             }
 
             // Add the start of run rewards to the SaveManager
