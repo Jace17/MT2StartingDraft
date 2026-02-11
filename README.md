@@ -6,14 +6,15 @@ A mod for Monster Train 2 that replaces the starter and random cards at the star
 
 - Removes all starting cards except for champions and blights
 - Adds the following drafts at the start of the run:
+  - 2 Banner Units from the main clan (same 3 choices for both)
+  - 2 Banner Units from the allied clan (same 3 choices for both)
+  - 1 Rare Banner Unit from either clan
+  - 1 Room or Equipment Card
   - 2 Cards from the main clan (same 3 choices for both, can be common, uncommon, or rare)
   - 2 Cards from the allied clan (same 3 choices for both, can be common, uncommon, or rare)
   - 2 Cards from the main clan (same 3 choices for both, can be uncommon or rare)
   - 2 Cards from the allied clan (same 3 choices for both, can be uncommon or rare)
   - 1 Rare Card from either clan
-  - 2 Banner Units from the main clan (same 3 choices for both)
-  - 2 Banner Units from the allied clan (same 3 choices for both)
-  - 1 Rare Banner Unit from either clan
 - Configuration file to specify how many starter cards and steward cards to have in the starting deck (default is 0)
 - Automatically disabled if Pyre Heart of Dominion is selected
 
