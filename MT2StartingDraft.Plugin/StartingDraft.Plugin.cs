@@ -48,6 +48,14 @@ namespace MT2StartingDraft.Plugin
         public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("AddStartOfRunRewards");
         public static void Postfix(SaveManager __instance, AllGameData ___allGameData, List<SaveManager.StartOfRunReward> ___startOfRunRewards, List<CardData> ___startOfRunShowcaseCards)
         {
+            // List all accessible rewards for debugging
+            //HashSet<GrantableRewardData> rewardDatas = ___allGameData.CollectAllAccessibleRewards(false, __instance.IsRegionRun);
+            //foreach (GrantableRewardData rewardData in rewardDatas)
+            //{
+            //    Log.LogInfo($"Reward Name: {rewardData.name}, Description: {rewardData.GetDescriptionText(__instance)}, Type: {rewardData.GetType()}, ID: {rewardData.GetID()}"); // Log all reward IDs
+            //}
+
+
             // Check if plugin is enabled
             if (Plugin.startingDraft != null && !Plugin.startingDraft.Value)
             {
@@ -84,15 +92,8 @@ namespace MT2StartingDraft.Plugin
             ClassData mainClass = __instance.GetMainClass();
             ClassData subClass = __instance.GetSubClass();
 
-            rewardNamesToAdd.Add("CardDraftMainClassReward");
-            rewardNamesToAdd.Add("CardDraftMainClassReward");
-            rewardNamesToAdd.Add("CardDraftSubClassReward");
-            rewardNamesToAdd.Add("CardDraftSubClassReward");
-            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftRareReward");
+            Log.LogInfo("Main Class: " + mainClass.Cheat_GetNameEnglish());
+            Log.LogInfo("Sub Class: " + subClass.Cheat_GetNameEnglish());
 
             if (mainClass.Cheat_GetNameEnglish() == "Awoken" || subClass.Cheat_GetNameEnglish() == "Awoken")
             {
@@ -139,12 +140,35 @@ namespace MT2StartingDraft.Plugin
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUmbra");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUmbra");
             }
+            if (mainClass.Cheat_GetNameEnglish() == "Wurmkin" || subClass.Cheat_GetNameEnglish() == "Wurmkin")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitWurm");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitWurm");
+            }
             if (mainClass.Cheat_GetNameEnglish() == "Underlegion" || subClass.Cheat_GetNameEnglish() == "Underlegion")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUnderlegion");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUnderlegion");
             }
+            if (mainClass.Cheat_GetNameEnglish() == "Railforged" || subClass.Cheat_GetNameEnglish() == "Railforged")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitRailforged");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitRailforged");
+            }
             rewardNamesToAdd.Add("CardDraftLevelUpUnitMainOrAllied");
+
+            rewardNamesToAdd.Add("CardDraftEquipmentOrRoom");
+
+            rewardNamesToAdd.Add("CardDraftMainClassReward");
+            rewardNamesToAdd.Add("CardDraftMainClassReward");
+            rewardNamesToAdd.Add("CardDraftSubClassReward");
+            rewardNamesToAdd.Add("CardDraftSubClassReward");
+            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
+            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
+            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
+            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
+            rewardNamesToAdd.Add("CardDraftRareReward");
+
 
             foreach (String rewardName in rewardNamesToAdd)
             {
