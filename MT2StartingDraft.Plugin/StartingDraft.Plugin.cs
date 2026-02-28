@@ -23,17 +23,17 @@ namespace MT2StartingDraft.Plugin
             startingDraft = Config.Bind("General",
                 "StartingDraftEnabled",
                 true,
-                "Draft cards at the start of a run");
+                "Draft cards at the start of a run\n初始是否有自选卡包");
 
             starterCards = Config.Bind("General",
                 "StarterCardsToAdd",
                 0,
-                "How many of each starter card to add");
+                "How many of each starter card to add\n每种起始卡牌的初始数量");
 
             stewardCards = Config.Bind("General",
                 "StewardCardsToAdd",
                 0,
-                "How many of each train steward card to add");
+                "How many of each train steward card to add\n盾牌乘务员和长矛乘务员的每种初始数量");
 
             // Uncomment if you need harmony patches, if you are writing your own custom effects.
             var harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
