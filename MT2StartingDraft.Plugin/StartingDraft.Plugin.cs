@@ -2,7 +2,6 @@
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
-using UnityEngine.UIElements;
 
 namespace MT2StartingDraft.Plugin
 {
@@ -48,14 +47,6 @@ namespace MT2StartingDraft.Plugin
         public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("AddStartOfRunRewards");
         public static void Postfix(SaveManager __instance, AllGameData ___allGameData, List<SaveManager.StartOfRunReward> ___startOfRunRewards, List<CardData> ___startOfRunShowcaseCards)
         {
-            // List all accessible rewards for debugging
-            //HashSet<GrantableRewardData> rewardDatas = ___allGameData.CollectAllAccessibleRewards(false, __instance.IsRegionRun);
-            //foreach (GrantableRewardData rewardData in rewardDatas)
-            //{
-            //    Log.LogInfo($"Reward Name: {rewardData.name}, Description: {rewardData.GetDescriptionText(__instance)}, Type: {rewardData.GetType()}, ID: {rewardData.GetID()}"); // Log all reward IDs
-            //}
-
-
             // Check if plugin is enabled
             if (Plugin.startingDraft != null && !Plugin.startingDraft.Value)
             {
@@ -95,80 +86,155 @@ namespace MT2StartingDraft.Plugin
             Log.LogInfo("Main Class: " + mainClass.Cheat_GetNameEnglish());
             Log.LogInfo("Sub Class: " + subClass.Cheat_GetNameEnglish());
 
-            if (mainClass.Cheat_GetNameEnglish() == "Awoken" || subClass.Cheat_GetNameEnglish() == "Awoken")
+            // Add the main class banner units
+            if (mainClass.Cheat_GetNameEnglish() == "Awoken")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitAwoken");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitAwoken");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Banished" || subClass.Cheat_GetNameEnglish() == "Banished")
+            if (mainClass.Cheat_GetNameEnglish() == "Banished")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitBanished");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitBanished");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Hellhorned" || subClass.Cheat_GetNameEnglish() == "Hellhorned")
+            if (mainClass.Cheat_GetNameEnglish() == "Hellhorned")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitHellhorned");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitHellhorned");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Lazarus League" || subClass.Cheat_GetNameEnglish() == "Lazarus League")
+            if (mainClass.Cheat_GetNameEnglish() == "Lazarus League")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitLazarusLeague");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitLazarusLeague");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Luna Coven" || subClass.Cheat_GetNameEnglish() == "Luna Coven")
+            if (mainClass.Cheat_GetNameEnglish() == "Luna Coven")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitLunaCoven");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitLunaCoven");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Melting Remnant" || subClass.Cheat_GetNameEnglish() == "Melting Remnant")
+            if (mainClass.Cheat_GetNameEnglish() == "Melting Remnant")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitRemnant");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitRemnant");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Pyreborne" || subClass.Cheat_GetNameEnglish() == "Pyreborne")
+            if (mainClass.Cheat_GetNameEnglish() == "Pyreborne")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitPyreborne");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitPyreborne");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Stygian Guard" || subClass.Cheat_GetNameEnglish() == "Stygian Guard")
+            if (mainClass.Cheat_GetNameEnglish() == "Stygian Guard")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitStygian");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitStygian");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Umbra" || subClass.Cheat_GetNameEnglish() == "Umbra")
+            if (mainClass.Cheat_GetNameEnglish() == "Umbra")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUmbra");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUmbra");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Wurmkin" || subClass.Cheat_GetNameEnglish() == "Wurmkin")
+            if (mainClass.Cheat_GetNameEnglish() == "Wurmkin")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitWurm");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitWurm");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Underlegion" || subClass.Cheat_GetNameEnglish() == "Underlegion")
+            if (mainClass.Cheat_GetNameEnglish() == "Underlegion")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUnderlegion");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitUnderlegion");
             }
-            if (mainClass.Cheat_GetNameEnglish() == "Railforged" || subClass.Cheat_GetNameEnglish() == "Railforged")
+            if (mainClass.Cheat_GetNameEnglish() == "Railforged")
             {
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitRailforged");
                 rewardNamesToAdd.Add("CardDraftLevelUpUnitRailforged");
             }
+
+            // Add sub class banner units
+            if (subClass.Cheat_GetNameEnglish() == "Awoken")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitAwoken");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitAwoken");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Banished")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitBanished");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitBanished");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Hellhorned")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitHellhorned");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitHellhorned");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Lazarus League")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitLazarusLeague");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitLazarusLeague");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Luna Coven")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitLunaCoven");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitLunaCoven");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Melting Remnant")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitRemnant");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitRemnant");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Pyreborne")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitPyreborne");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitPyreborne");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Stygian Guard")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitStygian");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitStygian");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Umbra")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitUmbra");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitUmbra");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Wurmkin")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitWurm");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitWurm");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Underlegion")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitUnderlegion");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitUnderlegion");
+            }
+            if (subClass.Cheat_GetNameEnglish() == "Railforged")
+            {
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitRailforged");
+                rewardNamesToAdd.Add("CardDraftLevelUpUnitRailforged");
+            }
+
+            // Add rare banner unit
             rewardNamesToAdd.Add("CardDraftLevelUpUnitMainOrAllied");
 
+            // Add equipment or room
+            rewardNamesToAdd.Add("CardDraftEquipmentOrRoom");
             rewardNamesToAdd.Add("CardDraftEquipmentOrRoom");
 
+            // Add main class common reward
             rewardNamesToAdd.Add("CardDraftMainClassReward");
             rewardNamesToAdd.Add("CardDraftMainClassReward");
-            rewardNamesToAdd.Add("CardDraftSubClassReward");
-            rewardNamesToAdd.Add("CardDraftSubClassReward");
-            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
-            rewardNamesToAdd.Add("CardDraftRareReward");
 
+            // Add sub class common reward
+            rewardNamesToAdd.Add("CardDraftSubClassReward");
+            rewardNamesToAdd.Add("CardDraftSubClassReward");
+
+            // Add main class uncommon reward
+            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
+            rewardNamesToAdd.Add("CardDraftMainClassUncommonReward");
+
+            // Add sub class uncommon reward
+            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
+            rewardNamesToAdd.Add("CardDraftSubClassUncommonReward");
+
+            // Add rare reward
+            rewardNamesToAdd.Add("CardDraftRareReward");
 
             foreach (String rewardName in rewardNamesToAdd)
             {
@@ -247,6 +313,12 @@ namespace MT2StartingDraft.Plugin
         public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("TryShowRunOpeningRewards");
         public static bool Prefix(ref bool __result, MapScreen __instance, SaveManager ___saveManager, ScreenManager ___screenManager)
         {
+            // Check if plugin is enabled
+            if (Plugin.startingDraft != null && !Plugin.startingDraft.Value)
+            {
+                return true;
+            }
+
             Log.LogInfo("Checking if run opening rewards should be shown...");
             if (!___saveManager.AreRunOpeningRewardsCompleted() && ___saveManager.StartOfRunRewards.Count > 0)
             {
@@ -274,6 +346,60 @@ namespace MT2StartingDraft.Plugin
             __result = false;
             Log.LogInfo("Run opening rewards check completed. Result: " + __result);
             return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(RewardData), "RewardTitle", MethodType.Getter)]
+    public class OverrideRewardTitle
+    {
+        public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("OverrideRewardTitle");
+        public static void Postfix(ref string __result, RewardData __instance)
+        {
+            // Check if plugin is enabled
+            if (Plugin.startingDraft != null && !Plugin.startingDraft.Value)
+            {
+                return;
+            }
+
+            // Log.LogInfo($"Getting reward title for reward: {__instance.name}");
+
+            if (__instance.name == "CardDraftLevelUpUnitMainOrAllied")
+            {
+                __result = "Rare Unit Draft";
+            }
+            else if (__instance.name.StartsWith("CardDraftLevelUpUnit"))
+            {
+                __result = "Unit Draft";
+            }
+            else if (__instance.name == "CardDraftEquipmentOrRoom")
+            {
+                __result = "Equipment or Room Draft";
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(SaveManager), "GetNumCardsToApplyRandomDraftEnhancerTo")]
+    public class OverrideNumCardsToApplyRandomDraftEnhancerTo
+    {
+        public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("OverrideNumCardsToApplyRandomDraftEnhancerTo");
+        public static void Postfix(ref int __result, SaveManager __instance)
+        {
+            // Check if plugin is enabled
+            if (Plugin.startingDraft != null && !Plugin.startingDraft.Value)
+            {
+                return;
+            }
+
+            // Only during starting draft
+            if (__instance.GetNumBattlesWon() > 0)
+            {
+                return;
+            }
+
+            if (__instance.GetMainClass().Cheat_GetNameEnglish() == "Wurmkin" || __instance.GetSubClass().Cheat_GetNameEnglish() == "Wurmkin")
+            {
+                __result = 3;
+            }
         }
     }
 }
